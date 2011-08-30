@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tutelage- <%= yield(:title) || "Learning for free" %></title>
+  <%= stylesheet_link_tag    "application" %>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+	
+        <h3> <%= link_to logo, root_path %><a href="#">Tutelage</a></h3>
+    		<ul>
+				      <li><%= link_to "Home", root_path %></li>
+				      <% if signed_in? %>
+				      <li><%= link_to "Profile", current_user %></li>
+				<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+				      <% end %>
+				     
+				      <% if signed_in? %>
+				      <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+				      <% else %>
+				      <li><%= link_to "Sign in", signin_path %></li>
+				      <% end %>
+				    </ul>
+      </div>
+    </div>
+  </div>
+
+  
+	<div class="container">
+	
+	    <div class="sidebar">
+	    <p> sidebar content goes here</p>
+	    </div>
+	    <div class="content">
+		
+	      <%= yield %>
+	    </div>
+	  </div>
+		<footer>
+		        <p>&copy; Company 2011</p>
+		      </footer>
+
+
+
+</body>
+</html>
